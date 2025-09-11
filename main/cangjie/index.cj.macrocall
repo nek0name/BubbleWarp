@@ -5,6 +5,7 @@ internal import ohos.component.*
 internal import ohos.state_manage.*
 import ohos.state_macro_manage.*
 import cj_res_entry.*
+import std.collection.*
 import ohos.image.Image as MultiImage
 import ohos.image.Component as ImageComponent
 import ohos.image.InitializationOptions
@@ -12,93 +13,177 @@ import ohos.image.PixelMapFormat
 import ohos.image.PixelMap
 import ohos.image.createPixelMap
 import ohos.image.Size as UniqueImageSize
+import ohos.prompt_action.*
+import std.collection.ArrayList
 
 
-/* ===== Emitted by MacroCall @Entry in index.cj:17:1 ===== */
-/* 17.1 */class EntryView <: CustomView {
-/* 17.2 */    var pixelMap:?PixelMap = None
-/* 17.3 */    private var stateVarDecl_loaded_: ObservedProperty < Bool >= ObservedProperty < Bool >("stateVarDecl_loaded_", false)
-/* 17.4 */    private mut prop loaded: Bool {
-/* 17.5 */        get() {
-/* 17.6 */            return this.stateVarDecl_loaded_.get()
-/* 17.7 */        }
-/* 17.8 */        set(v) {
-/* 17.9 */            this.stateVarDecl_loaded_.set(v)
-/* 17.10 */        }
-/* 17.11 */    }
-/* 17.12 */    private var stateVarDecl_text_: ObservedProperty < String >= ObservedProperty < String >("stateVarDecl_text_", "")
-/* 17.13 */    private mut prop text: String {
-/* 17.14 */        get() {
-/* 17.15 */            return this.stateVarDecl_text_.get()
-/* 17.16 */        }
-/* 17.17 */        set(v) {
-/* 17.18 */            this.stateVarDecl_text_.set(v)
-/* 17.19 */        }
-/* 17.20 */    }
-/* 17.21 */    public func build() {
-/* 17.22 */        this.observeComponentCreation({ elmtId, isInitialRender => Column { this.observeComponentCreation({ elmtId, isInitialRender => Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Start)) { this.observeComponentCreation({ elmtId, isInitialRender => Row(0) { this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.Bubble_Warp, "app.media.Bubble_Warp",[], 20000)).onTouch({ event => this.text = """
-                        TouchType: ${event.eventType.toString()}
-                            x: ${event.touches[0].x}
-                            y: ${event.touches[0].y}
-                            """
-/* 17.23 */        AppLog.info(this.text) }).width(200.px).width(300).height(400) }) } }) }.backgroundColor(0x838383).size(width: 300, height: 400) })
-/* 17.24 */        this.observeComponentCreation({ elmtId, isInitialRender => Button("换一张").shape(ShapeType.Capsule).size(width: 100, height: 50).margin(top: 100) })
-/* 17.25 */        this.observeComponentCreation({ elmtId, isInitialRender => Text(this.text).padding(15).width(100.percent) }) }.height(700).width(400).padding(top: 100).backgroundColor(0xAFEEEE) })
-/* 17.26 */        ()
-/* 17.27 */    }
-/* 17.28 */    public init(parent: Option < CustomView >, pixelMap!: Option < ObservedProperty <?PixelMap >>= None, loaded!: Option < ObservedProperty < Bool >>= None, text!: Option < ObservedProperty < String >>= None, localStorage!: Option < LocalStorage >= None) {
-/* 17.29 */        super(parent, localStorage)
-/* 17.30 */        match(pixelMap) {
-/* 17.31 */            case Some(v) => this.pixelMap = v.get()
-/* 17.32 */            case _ =>()
-/* 17.33 */        }
-/* 17.34 */        match(loaded) {
-/* 17.35 */            case Some(v) => this.stateVarDecl_loaded_ = ObservedProperty < Bool >("stateVarDecl_loaded_", v.get())
-/* 17.36 */            case _ =>()
-/* 17.37 */        }
-/* 17.38 */        match(text) {
-/* 17.39 */            case Some(v) => this.stateVarDecl_text_ = ObservedProperty < String >("stateVarDecl_text_", v.get())
-/* 17.40 */            case _ =>()
-/* 17.41 */        }
-/* 17.42 */        this.stateVarDecl_loaded_.subscribeEx(this)
-/* 17.43 */        this.stateVarDecl_text_.subscribeEx(this)
-/* 17.44 */        SubscriberManager.getInstance().add(this)
-/* 17.45 */        registerSelf()
-/* 17.46 */        parent?.addChildById(id(), this)
-/* 17.47 */    }
-/* 17.48 */    public override func aboutToBeDeleted() {
-/* 17.49 */        this.stateVarDecl_loaded_.unsubscribeEx(this)
-/* 17.50 */        this.stateVarDecl_text_.unsubscribeEx(this)
-/* 17.51 */        SubscriberManager.getInstance().delete(this)
-/* 17.52 */        this.aboutToBeDeletedInternal()
-/* 17.53 */    }
-/* 17.54 */    func updateWithValueParams(pixelMap!: Option <?PixelMap >= Option <?PixelMap >.None, loaded!: Option < Bool >= Option < Bool >.None, text!: Option < String >= Option < String >.None): Unit {
-/* 17.55 */        match(loaded) {
-/* 17.56 */            case Some(v) => this.loaded = v
-/* 17.57 */            case _ =>()
-/* 17.58 */        }
-/* 17.59 */        match(text) {
-/* 17.60 */            case Some(v) => this.text = v
-/* 17.61 */            case _ =>()
-/* 17.62 */        }
-/* 17.63 */    }
-/* 17.64 */    public func rerender() {
-/* 17.65 */        this.updateDirtyElements()
-/* 17.66 */    }
-/* 17.67 */    public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
-/* 17.68 */        this.stateVarDecl_loaded_.purgeDependencyOnElmtId(rmElmtId)
-/* 17.69 */        this.stateVarDecl_text_.purgeDependencyOnElmtId(rmElmtId)
-/* 17.70 */    }
-/* 17.71 */    public func forceRerender(deep!: Bool = false) {
-/* 17.72 */        this.forceCompleteRerender(deep)
-/* 17.73 */    }
-/* 17.74 */}
-/* 17.75 */
-/* 17.76 */public func appEntry_0(): Bool {
-/* 17.77 */    let view = EntryView(Option < CustomView >.None)
-/* 17.78 */    loadNativeView(view)
-/* 17.79 */}
-/* 17.80 */
-/* 17.81 */let a_p_1 = CJEntry.getInstance().registerEntry("EntryView", appEntry_0)
-/* 17.82 */
+
+type ObservedMatrix = ObservedArray<(Bool,Int64)>
+/* ===== Emitted by MacroCall @Component in index.cj:22:1 ===== */
+/* 22.1 */class BubbleLine <: CustomView {
+/* 22.2 */    
+/* 22.3 */    
+/* 22.4 */    private var stateVarDecl_data_: ObservedProperty < ObservedMatrix >
+/* 22.5 */    
+/* 22.6 */    
+/* 22.7 */    private mut prop data: ObservedMatrix {
+/* 22.8 */        get() {
+/* 22.9 */            return this.stateVarDecl_data_.get()
+/* 22.10 */        }
+/* 22.11 */        set(v) {
+/* 22.12 */            this.stateVarDecl_data_.set(v)
+/* 22.13 */        }
+/* 22.14 */    }
+/* 22.15 */    
+/* 22.16 */    
+/* 22.17 */    
+/* 22.18 */    public func build() {
+/* 22.19 */        
+/* 22.20 */        this.observeComponentCreation({ elmtId, isInitialRender =>
+/* 22.21 */            Stack { this.observeComponentCreation({ elmtId, isInitialRender => Grid { this.observeComponentCreation({ elmtId, isInitialRender => ForEach { let forEachItemGenFunction = { _:(Bool, Int64), i: Int64 => this.observeComponentCreation({ elmtId, isInitialRender => GridItem { this.observeComponentCreation({ elmtId, isInitialRender => If { if(data[i][0]) {
+/* 22.22 */                this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.White_Chess, "app.media.White_Chess",[], 20000)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(! data[i][0], data[i][1]) }) }) })
+/* 22.23 */            }
+/* 22.24 */            else {
+/* 22.25 */                this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.Black_Chess, "app.media.Black_Chess",[], 20000)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(! data[i][0], data[i][1]) }) }) })
+/* 22.26 */            }
+/* 22.27 */        } }) } }) }
+/* 22.28 */        
+/* 22.29 */    this.forEachUpdateFunction(elmtId, data, itemGenFunc: forEachItemGenFunction) } }) }.columnsTemplate("1fr 1fr 1fr 1fr 1fr 1fr 1fr").rowsTemplate("1fr").width(100.percent) }) }
+/* 22.30 */})
+/* 22.31 */
+/* 22.32 */()
+/* 22.33 */
+/* 22.34 */}
+/* 22.35 */
+/* 22.36 */
+/* 22.37 */public init(parent: Option < CustomView >, data!: ObservedProperty < ObservedMatrix >, localStorage!: Option < LocalStorage >= None) {
+/* 22.38 */super(parent, localStorage)
+/* 22.39 */
+/* 22.40 */
+/* 22.41 */this.stateVarDecl_data_ = data.createProp("stateVarDecl_data_")
+/* 22.42 */
+/* 22.43 */
+/* 22.44 */this.stateVarDecl_data_.subscribeEx(this)
+/* 22.45 */
+/* 22.46 */SubscriberManager.getInstance().add(this)
+/* 22.47 */
+/* 22.48 */
+/* 22.49 */registerSelf()
+/* 22.50 */parent?.addChildById(id(), this)
+/* 22.51 */}
+/* 22.52 */
+/* 22.53 */
+/* 22.54 */public override func aboutToBeDeleted() {
+/* 22.55 */
+/* 22.56 */this.stateVarDecl_data_.unsubscribeEx(this)
+/* 22.57 */
+/* 22.58 */SubscriberManager.getInstance().delete(this)
+/* 22.59 */this.aboutToBeDeletedInternal()
+/* 22.60 */}
+/* 22.61 */
+/* 22.62 */
+/* 22.63 */func updateWithValueParams(data!: Option < ObservedMatrix >= Option < ObservedMatrix >.None): Unit {
+/* 22.64 */
+/* 22.65 */match(data) {
+/* 22.66 */    case Some(v) => this.data = v
+/* 22.67 */    case _ =>()
+/* 22.68 */}
+/* 22.69 */
+/* 22.70 */}
+/* 22.71 */
+/* 22.72 */
+/* 22.73 */public func rerender() {
+/* 22.74 */this.updateDirtyElements()
+/* 22.75 */}
+/* 22.76 */
+/* 22.77 */
+/* 22.78 */public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
+/* 22.79 */
+/* 22.80 */this.stateVarDecl_data_.purgeDependencyOnElmtId(rmElmtId)
+/* 22.81 */
+/* 22.82 */}
+/* 22.83 */
+/* 22.84 */
+/* 22.85 */public func forceRerender(deep!: Bool = false) {
+/* 22.86 */this.forceCompleteRerender(deep)
+/* 22.87 */}
+/* 22.88 */
+/* 22.89 */
+/* 22.90 */}
+/* 22.91 */
+/* ===== End of the Emit ===== */
+
+/* ===== Emitted by MacroCall @Entry in index.cj:53:1 ===== */
+/* 53.1 */class EntryView <: CustomView {
+/* 53.2 */    private var stateVarDecl_data_: ObservedProperty < ObservedArray < ObservedMatrix >>= ObservedProperty < ObservedArray < ObservedMatrix >>("stateVarDecl_data_", ObservedArray(Array(6, { _ => ObservedArray(Array(6, item:(true, 0))) })))
+/* 53.3 */    private mut prop data: ObservedArray < ObservedMatrix > {
+/* 53.4 */        get() {
+/* 53.5 */            return this.stateVarDecl_data_.get()
+/* 53.6 */        }
+/* 53.7 */        set(v) {
+/* 53.8 */            this.stateVarDecl_data_.set(v)
+/* 53.9 */        }
+/* 53.10 */    }
+/* 53.11 */    public func build() {
+/* 53.12 */        this.observeComponentCreation({ elmtId, isInitialRender => Column { this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 53.13 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[0])))
+/* 53.14 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).padding(left: 40) })
+/* 53.15 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 53.16 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[1])))
+/* 53.17 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 53.18 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 53.19 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[2])))
+/* 53.20 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 53.21 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 53.22 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[3])))
+/* 53.23 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 53.24 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 53.25 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[4])))
+/* 53.26 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 53.27 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 53.28 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[5])))
+/* 53.29 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 53.30 */        this.observeComponentCreation({ elmtId, isInitialRender => Button("换一张").onClick { evt => this.data = ObservedArray(Array(6, { _ => ObservedArray(Array(6, item:(true, 0))) })) }.fontSize(10).margin(top: 60) }) }.margin(top: 10.percent).padding(top: 50).border(width: 1.vp).borderStyle(BorderStyle.Dashed) })
+/* 53.31 */        ()
+/* 53.32 */    }
+/* 53.33 */    public init(parent: Option < CustomView >, data!: Option < ObservedProperty < ObservedArray < ObservedMatrix >>>= None, localStorage!: Option < LocalStorage >= None) {
+/* 53.34 */        super(parent, localStorage)
+/* 53.35 */        match(data) {
+/* 53.36 */            case Some(v) => this.stateVarDecl_data_ = ObservedProperty < ObservedArray < ObservedMatrix >>("stateVarDecl_data_", v.get())
+/* 53.37 */            case _ =>()
+/* 53.38 */        }
+/* 53.39 */        this.stateVarDecl_data_.subscribeEx(this)
+/* 53.40 */        SubscriberManager.getInstance().add(this)
+/* 53.41 */        registerSelf()
+/* 53.42 */        parent?.addChildById(id(), this)
+/* 53.43 */    }
+/* 53.44 */    public override func aboutToBeDeleted() {
+/* 53.45 */        this.stateVarDecl_data_.unsubscribeEx(this)
+/* 53.46 */        SubscriberManager.getInstance().delete(this)
+/* 53.47 */        this.aboutToBeDeletedInternal()
+/* 53.48 */    }
+/* 53.49 */    func updateWithValueParams(data!: Option < ObservedArray < ObservedMatrix >>= Option < ObservedArray < ObservedMatrix >>.None): Unit {
+/* 53.50 */        match(data) {
+/* 53.51 */            case Some(v) => this.data = v
+/* 53.52 */            case _ =>()
+/* 53.53 */        }
+/* 53.54 */    }
+/* 53.55 */    public func rerender() {
+/* 53.56 */        this.updateDirtyElements()
+/* 53.57 */    }
+/* 53.58 */    public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
+/* 53.59 */        this.stateVarDecl_data_.purgeDependencyOnElmtId(rmElmtId)
+/* 53.60 */    }
+/* 53.61 */    public func forceRerender(deep!: Bool = false) {
+/* 53.62 */        this.forceCompleteRerender(deep)
+/* 53.63 */    }
+/* 53.64 */}
+/* 53.65 */
+/* 53.66 */public func appEntry_0(): Bool {
+/* 53.67 */    let view = EntryView(Option < CustomView >.None)
+/* 53.68 */    loadNativeView(view)
+/* 53.69 */}
+/* 53.70 */
+/* 53.71 */let a_p_1 = CJEntry.getInstance().registerEntry("EntryView", appEntry_0)
+/* 53.72 */
 /* ===== End of the Emit ===== */

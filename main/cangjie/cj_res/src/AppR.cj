@@ -12,6 +12,7 @@ public class AppColor {
 }
 
 public class AppMedia {
+	public var Black_Chess = 16777228
 	public var Bubble_Warp = 16777226
 	public var White_Chess = 16777227
 	public var background = 16777217
