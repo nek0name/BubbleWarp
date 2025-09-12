@@ -29,13 +29,13 @@ class BubbleLine {
                             GridItem {
                             if(data[i][0])
                             {
-                                Image(@r(app.media.White_Chess)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed)
+                                Image(@r(app.media.Before1)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
                                     data[i] = (!data[i][0],data[i][1])
                                         })
                             }
                             else{
-                                Image(@r(app.media.Black_Chess)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed)
+                                Image(@r(app.media.After1)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
                                     data[i] = (!data[i][0],data[i][1])
                                         })
@@ -121,4 +121,5 @@ class EntryView {
         .border(width: 1.vp)
         .borderStyle(BorderStyle.Dashed)
     }
+
 }
