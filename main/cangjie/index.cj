@@ -29,13 +29,13 @@ class BubbleLine {
                             GridItem {
                             if(data[i][0])
                             {
-                                Image(@r(app.media.Before1)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed)
+                                Image(@r(app.media.Before2)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
                                     data[i] = (!data[i][0],data[i][1])
                                         })
                             }
                             else{
-                                Image(@r(app.media.After1)).width(40).height(40).border(width: 1.vp).borderStyle(BorderStyle.Dashed)
+                                Image(@r(app.media.After2)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
                                     data[i] = (!data[i][0],data[i][1])
                                         })
@@ -123,3 +123,4 @@ class EntryView {
     }
 
 }
+
