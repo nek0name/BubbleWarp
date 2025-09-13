@@ -12,17 +12,21 @@ public class AppColor {
 }
 
 public class AppMedia {
+	public var After1 = 16777224
+	public var After2 = 16777225
+	public var Before1 = 16777226
+	public var Before2 = 16777227
 	public var Black_Chess = 16777228
-	public var Bubble_Warp = 16777226
-	public var White_Chess = 16777227
+	public var Bubble_Warp = 16777229
+	public var White_Chess = 16777230
 	public var background = 16777217
 	public var foreground = 16777218
 	public var layered_image = 16777219
-	public var startIcon = 16777224
+	public var startIcon = 16777231
 }
 
 public class AppProfile {
-	public var main_pages = 16777225
+	public var main_pages = 16777232
 }
 
 public class app {
