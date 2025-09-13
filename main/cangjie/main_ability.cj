@@ -4,6 +4,8 @@ internal import ohos.base.AppLog
 internal import ohos.ability.AbilityStage
 internal import ohos.ability.LaunchReason
 internal import cj_res_entry.app
+import crypto.x509.Signature
+import ohos.window.SystemBarProperties
 
 class MainAbility <: Ability {
     public init() {
@@ -21,6 +23,15 @@ class MainAbility <: Ability {
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
         AppLog.info("MainAbility onWindowStageCreate.")
+        let windowClass=windowStage.getMainWindow()
+        windowClass.setWindowSystemBarEnable(["status","navigation"])
+        windowClass.setWindowLayoutFullScreen(true)
+        let systemBarProperties=SystemBarProperties(
+            statusBarColor:"#ff00ff",
+            navigationBarColor:"#00ff00",
+            statusBarContentColor:"#ffffff",
+            navigationBarContentColor:"#00ffff"
+        )
         windowStage.loadContent("EntryView")
     }
 }
