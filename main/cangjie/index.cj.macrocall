@@ -12,256 +12,359 @@ import ohos.image.InitializationOptions
 import ohos.image.PixelMapFormat
 import ohos.image.PixelMap
 import ohos.image.createPixelMap
-import ohos.image.Size as UniqueImageSize
+import ohos.image.Size as UniqueIm
 import ohos.prompt_action.*
 import std.collection.ArrayList
+import std.sync.*
+import std.time.*
 
 
 type ObservedMatrix = ObservedArray<(Bool,Int64)>
-/* ===== Emitted by MacroCall @Component in index.cj:21:1 ===== */
-/* 21.1 */class BubbleLine <: CustomView {
-/* 21.2 */    
-/* 21.3 */    
-/* 21.4 */    private var stateVarDecl_data_: ObservedProperty < ObservedMatrix >
-/* 21.5 */    
-/* 21.6 */    
-/* 21.7 */    private mut prop data: ObservedMatrix {
-/* 21.8 */        get() {
-/* 21.9 */            return this.stateVarDecl_data_.get()
-/* 21.10 */        }
-/* 21.11 */        set(v) {
-/* 21.12 */            this.stateVarDecl_data_.set(v)
-/* 21.13 */        }
-/* 21.14 */    }
-/* 21.15 */    
-/* 21.16 */    
-/* 21.17 */    private var stateVarDecl_isType2_: ObservedProperty < Bool >
-/* 21.18 */    
-/* 21.19 */    
-/* 21.20 */    private mut prop isType2: Bool {
-/* 21.21 */        get() {
-/* 21.22 */            return this.stateVarDecl_isType2_.get()
-/* 21.23 */        }
-/* 21.24 */        set(v) {
-/* 21.25 */            this.stateVarDecl_isType2_.set(v)
-/* 21.26 */        }
-/* 21.27 */    }
-/* 21.28 */    
-/* 21.29 */    
-/* 21.30 */    
-/* 21.31 */    public func build() {
-/* 21.32 */        
-/* 21.33 */        this.observeComponentCreation({ elmtId, isInitialRender =>
-/* 21.34 */            Stack { this.observeComponentCreation({ elmtId, isInitialRender => Grid { this.observeComponentCreation({ elmtId, isInitialRender => ForEach { let forEachItemGenFunction = { _:(Bool, Int64), i: Int64 => this.observeComponentCreation({ elmtId, isInitialRender => GridItem { this.observeComponentCreation({ elmtId, isInitialRender => If { if(data[i][0]) {
-/* 21.35 */                this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => If { if(isType2) {
-/* 21.36 */                    this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.Before2, "app.media.Before2",[], 20000)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(! data[i][0], data[i][1]) }) }) })
-/* 21.37 */                }
-/* 21.38 */                else {
-/* 21.39 */                    this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.Before1, "app.media.Before1",[], 20000)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(! data[i][0], data[i][1]) }) }) })
-/* 21.40 */                }
-/* 21.41 */            } }) })
-/* 21.42 */        }
-/* 21.43 */        else {
-/* 21.44 */            this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => If { if(isType2) {
-/* 21.45 */                this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.After2, "app.media.After2",[], 20000)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(! data[i][0], data[i][1]) }) }) })
-/* 21.46 */            }
-/* 21.47 */            else {
-/* 21.48 */                this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.After1, "app.media.After1",[], 20000)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(! data[i][0], data[i][1]) }) }) })
-/* 21.49 */            }
-/* 21.50 */        } }) })
-/* 21.51 */    }
-/* 21.52 */} }) } }) }
-/* 21.53 */
-/* 21.54 */this.forEachUpdateFunction(elmtId, data, itemGenFunc: forEachItemGenFunction) } }) }.columnsTemplate("1fr 1fr 1fr 1fr 1fr 1fr 1fr").rowsTemplate("1fr").width(100.percent) }) }
-/* 21.55 */})
-/* 21.56 */
-/* 21.57 */()
-/* 21.58 */
-/* 21.59 */}
-/* 21.60 */
-/* 21.61 */
-/* 21.62 */public init(parent: Option < CustomView >, data!: ObservedProperty < ObservedMatrix >, isType2!: ObservedProperty < Bool >, localStorage!: Option < LocalStorage >= None) {
-/* 21.63 */super(parent, localStorage)
-/* 21.64 */
-/* 21.65 */
-/* 21.66 */this.stateVarDecl_data_ = data.createProp("stateVarDecl_data_")
-/* 21.67 */
-/* 21.68 */this.stateVarDecl_isType2_ = isType2.createProp("stateVarDecl_isType2_")
-/* 21.69 */
-/* 21.70 */
-/* 21.71 */this.stateVarDecl_data_.subscribeEx(this)
-/* 21.72 */
-/* 21.73 */this.stateVarDecl_isType2_.subscribeEx(this)
-/* 21.74 */
-/* 21.75 */SubscriberManager.getInstance().add(this)
-/* 21.76 */
-/* 21.77 */
-/* 21.78 */registerSelf()
-/* 21.79 */parent?.addChildById(id(), this)
-/* 21.80 */}
-/* 21.81 */
-/* 21.82 */
-/* 21.83 */public override func aboutToBeDeleted() {
-/* 21.84 */
-/* 21.85 */this.stateVarDecl_data_.unsubscribeEx(this)
-/* 21.86 */
-/* 21.87 */this.stateVarDecl_isType2_.unsubscribeEx(this)
-/* 21.88 */
-/* 21.89 */SubscriberManager.getInstance().delete(this)
-/* 21.90 */this.aboutToBeDeletedInternal()
-/* 21.91 */}
-/* 21.92 */
-/* 21.93 */
-/* 21.94 */func updateWithValueParams(data!: Option < ObservedMatrix >= Option < ObservedMatrix >.None, isType2!: Option < Bool >= Option < Bool >.None): Unit {
-/* 21.95 */
-/* 21.96 */match(data) {
-/* 21.97 */case Some(v) => this.data = v
-/* 21.98 */case _ =>()
-/* 21.99 */}
-/* 21.100 */
-/* 21.101 */match(isType2) {
-/* 21.102 */case Some(v) => this.isType2 = v
-/* 21.103 */case _ =>()
-/* 21.104 */}
-/* 21.105 */
-/* 21.106 */}
-/* 21.107 */
-/* 21.108 */
-/* 21.109 */public func rerender() {
-/* 21.110 */this.updateDirtyElements()
-/* 21.111 */}
-/* 21.112 */
-/* 21.113 */
-/* 21.114 */public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
-/* 21.115 */
-/* 21.116 */this.stateVarDecl_data_.purgeDependencyOnElmtId(rmElmtId)
-/* 21.117 */
-/* 21.118 */this.stateVarDecl_isType2_.purgeDependencyOnElmtId(rmElmtId)
-/* 21.119 */
-/* 21.120 */}
-/* 21.121 */
-/* 21.122 */
-/* 21.123 */public func forceRerender(deep!: Bool = false) {
-/* 21.124 */this.forceCompleteRerender(deep)
-/* 21.125 */}
-/* 21.126 */
-/* 21.127 */
-/* 21.128 */}
-/* 21.129 */
+/* ===== Emitted by MacroCall @Component in index.cj:23:1 ===== */
+/* 23.1 */class BubbleLine <: CustomView {
+/* 23.2 */    
+/* 23.3 */    
+/* 23.4 */    private var stateVarDecl_data_: ObservedProperty < ObservedMatrix >
+/* 23.5 */    
+/* 23.6 */    
+/* 23.7 */    private mut prop data: ObservedMatrix {
+/* 23.8 */        get() {
+/* 23.9 */            return this.stateVarDecl_data_.get()
+/* 23.10 */        }
+/* 23.11 */        set(v) {
+/* 23.12 */            this.stateVarDecl_data_.set(v)
+/* 23.13 */        }
+/* 23.14 */    }
+/* 23.15 */    
+/* 23.16 */    
+/* 23.17 */    private var stateVarDecl_isType2_: ObservedProperty < Bool >
+/* 23.18 */    
+/* 23.19 */    
+/* 23.20 */    private mut prop isType2: Bool {
+/* 23.21 */        get() {
+/* 23.22 */            return this.stateVarDecl_isType2_.get()
+/* 23.23 */        }
+/* 23.24 */        set(v) {
+/* 23.25 */            this.stateVarDecl_isType2_.set(v)
+/* 23.26 */        }
+/* 23.27 */    }
+/* 23.28 */    
+/* 23.29 */    
+/* 23.30 */    private var stateVarDecl_isShow_: ObservedProperty < Bool >= ObservedProperty < Bool >("stateVarDecl_isShow_", true)
+/* 23.31 */    
+/* 23.32 */    
+/* 23.33 */    private mut prop isShow: Bool {
+/* 23.34 */        get() {
+/* 23.35 */            return this.stateVarDecl_isShow_.get()
+/* 23.36 */        }
+/* 23.37 */        set(v) {
+/* 23.38 */            this.stateVarDecl_isShow_.set(v)
+/* 23.39 */        }
+/* 23.40 */    }
+/* 23.41 */    
+/* 23.42 */    
+/* 23.43 */    private var stateVarDecl_wideSize_: ObservedProperty < Length >= ObservedProperty < Length >("stateVarDecl_wideSize_", 40.vp)
+/* 23.44 */    
+/* 23.45 */    
+/* 23.46 */    private mut prop wideSize: Length {
+/* 23.47 */        get() {
+/* 23.48 */            return this.stateVarDecl_wideSize_.get()
+/* 23.49 */        }
+/* 23.50 */        set(v) {
+/* 23.51 */            this.stateVarDecl_wideSize_.set(v)
+/* 23.52 */        }
+/* 23.53 */    }
+/* 23.54 */    
+/* 23.55 */    
+/* 23.56 */    private var stateVarDecl_heightSize_: ObservedProperty < Length >= ObservedProperty < Length >("stateVarDecl_heightSize_", 40.vp)
+/* 23.57 */    
+/* 23.58 */    
+/* 23.59 */    private mut prop heightSize: Length {
+/* 23.60 */        get() {
+/* 23.61 */            return this.stateVarDecl_heightSize_.get()
+/* 23.62 */        }
+/* 23.63 */        set(v) {
+/* 23.64 */            this.stateVarDecl_heightSize_.set(v)
+/* 23.65 */        }
+/* 23.66 */    }
+/* 23.67 */    
+/* 23.68 */    
+/* 23.69 */    
+/* 23.70 */    public func build() {
+/* 23.71 */        
+/* 23.72 */        this.observeComponentCreation({ elmtId, isInitialRender =>
+/* 23.73 */            Stack { this.observeComponentCreation({ elmtId, isInitialRender => Grid { this.observeComponentCreation({ elmtId, isInitialRender => ForEach { let forEachItemGenFunction = { _:(Bool, Int64), i: Int64 => this.observeComponentCreation({ elmtId, isInitialRender => GridItem { this.observeComponentCreation({ elmtId, isInitialRender => If { if(data[i][0]) {
+/* 23.74 */                this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => If { if(isType2) {
+/* 23.75 */                    this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.Before2, "app.media.Before2",[], 20000)).width(this.wideSize).height(this.heightSize).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => if(this.isShow) {
+/* 23.76 */                        animateTo(AnimateParam(duration: 50, curve: Curve.EaseOut, iterations: 1, playMode: PlayMode.Normal, onFinish: { => AppLog.info("play end")
+/* 23.77 */                            animateTo(AnimateParam(duration: 100, curve: Curve.EaseOut, iterations: 1, playMode: PlayMode.Normal, onFinish: { => AppLog.info("play end")
+/* 23.78 */                            data[i] =(false, data[i][1]) }), { => this.wideSize = 40.vp
+/* 23.79 */                            this.heightSize = 40.vp }) }), { => this.wideSize = 30.vp
+/* 23.80 */                            this.heightSize = 30.vp })
+/* 23.81 */                        }
+/* 23.82 */                    }) }) })
+/* 23.83 */                }
+/* 23.84 */                else {
+/* 23.85 */                    this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.Before1, "app.media.Before1",[], 20000)).width(this.wideSize).height(this.heightSize).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => if(this.isShow) {
+/* 23.86 */                        animateTo(AnimateParam(duration: 50, curve: Curve.EaseOut, iterations: 1, playMode: PlayMode.Normal, onFinish: { => AppLog.info("play end")
+/* 23.87 */                            animateTo(AnimateParam(duration: 100, curve: Curve.EaseOut, iterations: 1, playMode: PlayMode.Normal, onFinish: { => AppLog.info("play end")
+/* 23.88 */                            data[i] =(false, data[i][1]) }), { => this.wideSize = 40.vp
+/* 23.89 */                            this.heightSize = 40.vp }) }), { => this.wideSize = 30.vp
+/* 23.90 */                            this.heightSize = 30.vp })
+/* 23.91 */                        }
+/* 23.92 */                    }) }) })
+/* 23.93 */                }
+/* 23.94 */            } }) })
+/* 23.95 */        }
+/* 23.96 */        else {
+/* 23.97 */            this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => If { if(isType2) {
+/* 23.98 */                this.ifElseBranchUpdateFunction(0, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.After2, "app.media.After2",[], 20000)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(false, data[i][1]) }) }) })
+/* 23.99 */            }
+/* 23.100 */            else {
+/* 23.101 */                this.ifElseBranchUpdateFunction(1, { => this.observeComponentCreation({ elmtId, isInitialRender => Image(__GenerateResource__("", "", "", app.media.After1, "app.media.After1",[], 20000)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed).onClick({ evt => data[i] =(false, data[i][1]) }) }) })
+/* 23.102 */            }
+/* 23.103 */        } }) })
+/* 23.104 */    }
+/* 23.105 */} }) } }) }
+/* 23.106 */
+/* 23.107 */this.forEachUpdateFunction(elmtId, data, itemGenFunc: forEachItemGenFunction) } }) }.columnsTemplate("1fr 1fr 1fr 1fr 1fr 1fr 1fr").rowsTemplate("1fr").width(100.percent) }) }
+/* 23.108 */})
+/* 23.109 */
+/* 23.110 */()
+/* 23.111 */
+/* 23.112 */}
+/* 23.113 */
+/* 23.114 */
+/* 23.115 */public init(parent: Option < CustomView >, data!: ObservedProperty < ObservedMatrix >, isType2!: ObservedProperty < Bool >, isShow!: Option < ObservedProperty < Bool >>= None, wideSize!: Option < ObservedProperty < Length >>= None, heightSize!: Option < ObservedProperty < Length >>= None, localStorage!: Option < LocalStorage >= None) {
+/* 23.116 */super(parent, localStorage)
+/* 23.117 */
+/* 23.118 */
+/* 23.119 */this.stateVarDecl_data_ = data.createProp("stateVarDecl_data_")
+/* 23.120 */
+/* 23.121 */this.stateVarDecl_isType2_ = isType2.createProp("stateVarDecl_isType2_")
+/* 23.122 */
+/* 23.123 */match(isShow) {
+/* 23.124 */case Some(v) => this.stateVarDecl_isShow_ = ObservedProperty < Bool >("stateVarDecl_isShow_", v.get())
+/* 23.125 */case _ =>()
+/* 23.126 */}
+/* 23.127 */
+/* 23.128 */match(wideSize) {
+/* 23.129 */case Some(v) => this.stateVarDecl_wideSize_ = ObservedProperty < Length >("stateVarDecl_wideSize_", v.get())
+/* 23.130 */case _ =>()
+/* 23.131 */}
+/* 23.132 */
+/* 23.133 */match(heightSize) {
+/* 23.134 */case Some(v) => this.stateVarDecl_heightSize_ = ObservedProperty < Length >("stateVarDecl_heightSize_", v.get())
+/* 23.135 */case _ =>()
+/* 23.136 */}
+/* 23.137 */
+/* 23.138 */
+/* 23.139 */this.stateVarDecl_data_.subscribeEx(this)
+/* 23.140 */
+/* 23.141 */this.stateVarDecl_isType2_.subscribeEx(this)
+/* 23.142 */
+/* 23.143 */this.stateVarDecl_isShow_.subscribeEx(this)
+/* 23.144 */
+/* 23.145 */this.stateVarDecl_wideSize_.subscribeEx(this)
+/* 23.146 */
+/* 23.147 */this.stateVarDecl_heightSize_.subscribeEx(this)
+/* 23.148 */
+/* 23.149 */SubscriberManager.getInstance().add(this)
+/* 23.150 */
+/* 23.151 */
+/* 23.152 */registerSelf()
+/* 23.153 */parent?.addChildById(id(), this)
+/* 23.154 */}
+/* 23.155 */
+/* 23.156 */
+/* 23.157 */public override func aboutToBeDeleted() {
+/* 23.158 */
+/* 23.159 */this.stateVarDecl_data_.unsubscribeEx(this)
+/* 23.160 */
+/* 23.161 */this.stateVarDecl_isType2_.unsubscribeEx(this)
+/* 23.162 */
+/* 23.163 */this.stateVarDecl_isShow_.unsubscribeEx(this)
+/* 23.164 */
+/* 23.165 */this.stateVarDecl_wideSize_.unsubscribeEx(this)
+/* 23.166 */
+/* 23.167 */this.stateVarDecl_heightSize_.unsubscribeEx(this)
+/* 23.168 */
+/* 23.169 */SubscriberManager.getInstance().delete(this)
+/* 23.170 */this.aboutToBeDeletedInternal()
+/* 23.171 */}
+/* 23.172 */
+/* 23.173 */
+/* 23.174 */func updateWithValueParams(data!: Option < ObservedMatrix >= Option < ObservedMatrix >.None, isType2!: Option < Bool >= Option < Bool >.None, isShow!: Option < Bool >= Option < Bool >.None, wideSize!: Option < Length >= Option < Length >.None, heightSize!: Option < Length >= Option < Length >.None): Unit {
+/* 23.175 */
+/* 23.176 */match(data) {
+/* 23.177 */case Some(v) => this.data = v
+/* 23.178 */case _ =>()
+/* 23.179 */}
+/* 23.180 */
+/* 23.181 */match(isType2) {
+/* 23.182 */case Some(v) => this.isType2 = v
+/* 23.183 */case _ =>()
+/* 23.184 */}
+/* 23.185 */
+/* 23.186 */match(isShow) {
+/* 23.187 */case Some(v) => this.isShow = v
+/* 23.188 */case _ =>()
+/* 23.189 */}
+/* 23.190 */
+/* 23.191 */match(wideSize) {
+/* 23.192 */case Some(v) => this.wideSize = v
+/* 23.193 */case _ =>()
+/* 23.194 */}
+/* 23.195 */
+/* 23.196 */match(heightSize) {
+/* 23.197 */case Some(v) => this.heightSize = v
+/* 23.198 */case _ =>()
+/* 23.199 */}
+/* 23.200 */
+/* 23.201 */}
+/* 23.202 */
+/* 23.203 */
+/* 23.204 */public func rerender() {
+/* 23.205 */this.updateDirtyElements()
+/* 23.206 */}
+/* 23.207 */
+/* 23.208 */
+/* 23.209 */public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
+/* 23.210 */
+/* 23.211 */this.stateVarDecl_data_.purgeDependencyOnElmtId(rmElmtId)
+/* 23.212 */
+/* 23.213 */this.stateVarDecl_isType2_.purgeDependencyOnElmtId(rmElmtId)
+/* 23.214 */
+/* 23.215 */this.stateVarDecl_isShow_.purgeDependencyOnElmtId(rmElmtId)
+/* 23.216 */
+/* 23.217 */this.stateVarDecl_wideSize_.purgeDependencyOnElmtId(rmElmtId)
+/* 23.218 */
+/* 23.219 */this.stateVarDecl_heightSize_.purgeDependencyOnElmtId(rmElmtId)
+/* 23.220 */
+/* 23.221 */}
+/* 23.222 */
+/* 23.223 */
+/* 23.224 */public func forceRerender(deep!: Bool = false) {
+/* 23.225 */this.forceCompleteRerender(deep)
+/* 23.226 */}
+/* 23.227 */
+/* 23.228 */
+/* 23.229 */}
+/* 23.230 */
 /* ===== End of the Emit ===== */
 
-/* ===== Emitted by MacroCall @Entry in index.cj:68:1 ===== */
-/* 68.1 */class EntryView <: CustomView {
-/* 68.2 */    private var stateVarDecl_data_: ObservedProperty < ObservedArray < ObservedMatrix >>= ObservedProperty < ObservedArray < ObservedMatrix >>("stateVarDecl_data_", ObservedArray(Array(6, { _ => ObservedArray(Array(6, item:(true, 0))) })))
-/* 68.3 */    private mut prop data: ObservedArray < ObservedMatrix > {
-/* 68.4 */        get() {
-/* 68.5 */            return this.stateVarDecl_data_.get()
-/* 68.6 */        }
-/* 68.7 */        set(v) {
-/* 68.8 */            this.stateVarDecl_data_.set(v)
-/* 68.9 */        }
-/* 68.10 */    }
-/* 68.11 */    private var stateVarDecl_isType_: ObservedProperty < Bool >= ObservedProperty < Bool >("stateVarDecl_isType_", true)
-/* 68.12 */    private mut prop isType: Bool {
-/* 68.13 */        get() {
-/* 68.14 */            return this.stateVarDecl_isType_.get()
-/* 68.15 */        }
-/* 68.16 */        set(v) {
-/* 68.17 */            this.stateVarDecl_isType_.set(v)
-/* 68.18 */        }
-/* 68.19 */    }
-/* 68.20 */    public func build() {
-/* 68.21 */        this.observeComponentCreation({ elmtId, isInitialRender => Column { this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
-/* 68.22 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[0]), isType2: stateVarDecl_isType_))
-/* 68.23 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).padding(left: 40) })
-/* 68.24 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
-/* 68.25 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[1]), isType2: stateVarDecl_isType_))
-/* 68.26 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
-/* 68.27 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
-/* 68.28 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[2]), isType2: stateVarDecl_isType_))
-/* 68.29 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
-/* 68.30 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
-/* 68.31 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[3]), isType2: stateVarDecl_isType_))
-/* 68.32 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
-/* 68.33 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
-/* 68.34 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[4]), isType2: stateVarDecl_isType_))
-/* 68.35 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
-/* 68.36 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
-/* 68.37 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[5]), isType2: stateVarDecl_isType_))
-/* 68.38 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
-/* 68.39 */        this.observeComponentCreation({ elmtId, isInitialRender => Button("换一张").onClick { evt => let rowIndices = 0 ..= 5
-/* 68.40 */            
-/* 68.41 */            for(i in rowIndices) {
-/* 68.42 */                let colIndices = 0 ..= 5
-/* 68.43 */                for(j in colIndices) {
-/* 68.44 */                    this.data[i][j] =(true, 0)
-/* 68.45 */                }
-/* 68.46 */            }
-/* 68.47 */        } })
-/* 68.48 */        this.observeComponentCreation({ elmtId, isInitialRender => Button("更换类型").onClick { evt => let rowIndices = 0 ..= 5
-/* 68.49 */            
-/* 68.50 */            for(i in rowIndices) {
-/* 68.51 */                let colIndices = 0 ..= 5
-/* 68.52 */                for(j in colIndices) {
-/* 68.53 */                    this.data[i][j] =(true, 0)
-/* 68.54 */                }
-/* 68.55 */            }
-/* 68.56 */            
-/* 68.57 */            match(isType) {
-/* 68.58 */                case true => isType = false
-/* 68.59 */                case false => isType = true
-/* 68.60 */            } } }) }.margin(top: 10.percent).padding(top: 50).border(width: 1.vp).borderStyle(BorderStyle.Dashed) })
-/* 68.61 */            ()
-/* 68.62 */        }
-/* 68.63 */        public init(parent: Option < CustomView >, data!: Option < ObservedProperty < ObservedArray < ObservedMatrix >>>= None, isType!: Option < ObservedProperty < Bool >>= None, localStorage!: Option < LocalStorage >= None) {
-/* 68.64 */            super(parent, localStorage)
-/* 68.65 */            match(data) {
-/* 68.66 */                case Some(v) => this.stateVarDecl_data_ = ObservedProperty < ObservedArray < ObservedMatrix >>("stateVarDecl_data_", v.get())
-/* 68.67 */                case _ =>()
-/* 68.68 */            }
-/* 68.69 */            match(isType) {
-/* 68.70 */                case Some(v) => this.stateVarDecl_isType_ = ObservedProperty < Bool >("stateVarDecl_isType_", v.get())
-/* 68.71 */                case _ =>()
-/* 68.72 */            }
-/* 68.73 */            this.stateVarDecl_data_.subscribeEx(this)
-/* 68.74 */            this.stateVarDecl_isType_.subscribeEx(this)
-/* 68.75 */            SubscriberManager.getInstance().add(this)
-/* 68.76 */            registerSelf()
-/* 68.77 */            parent?.addChildById(id(), this)
-/* 68.78 */        }
-/* 68.79 */        public override func aboutToBeDeleted() {
-/* 68.80 */            this.stateVarDecl_data_.unsubscribeEx(this)
-/* 68.81 */            this.stateVarDecl_isType_.unsubscribeEx(this)
-/* 68.82 */            SubscriberManager.getInstance().delete(this)
-/* 68.83 */            this.aboutToBeDeletedInternal()
-/* 68.84 */        }
-/* 68.85 */        func updateWithValueParams(data!: Option < ObservedArray < ObservedMatrix >>= Option < ObservedArray < ObservedMatrix >>.None, isType!: Option < Bool >= Option < Bool >.None): Unit {
-/* 68.86 */            match(data) {
-/* 68.87 */                case Some(v) => this.data = v
-/* 68.88 */                case _ =>()
-/* 68.89 */            }
-/* 68.90 */            match(isType) {
-/* 68.91 */                case Some(v) => this.isType = v
-/* 68.92 */                case _ =>()
-/* 68.93 */            }
-/* 68.94 */        }
-/* 68.95 */        public func rerender() {
-/* 68.96 */            this.updateDirtyElements()
-/* 68.97 */        }
-/* 68.98 */        public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
-/* 68.99 */            this.stateVarDecl_data_.purgeDependencyOnElmtId(rmElmtId)
-/* 68.100 */            this.stateVarDecl_isType_.purgeDependencyOnElmtId(rmElmtId)
-/* 68.101 */        }
-/* 68.102 */        public func forceRerender(deep!: Bool = false) {
-/* 68.103 */            this.forceCompleteRerender(deep)
-/* 68.104 */        }
-/* 68.105 */    }
-/* 68.106 */    
-/* 68.107 */    public func appEntry_0(): Bool {
-/* 68.108 */        let view = EntryView(Option < CustomView >.None)
-/* 68.109 */        loadNativeView(view)
-/* 68.110 */    }
-/* 68.111 */    
-/* 68.112 */    let a_p_1 = CJEntry.getInstance().registerEntry("EntryView", appEntry_0)
-/* 68.113 */    
+/* ===== Emitted by MacroCall @Entry in index.cj:121:1 ===== */
+/* 121.1 */class EntryView <: CustomView {
+/* 121.2 */    private var stateVarDecl_data_: ObservedProperty < ObservedArray < ObservedMatrix >>= ObservedProperty < ObservedArray < ObservedMatrix >>("stateVarDecl_data_", ObservedArray(Array(6, { _ => ObservedArray(Array(6, item:(true, 0))) })))
+/* 121.3 */    private mut prop data: ObservedArray < ObservedMatrix > {
+/* 121.4 */        get() {
+/* 121.5 */            return this.stateVarDecl_data_.get()
+/* 121.6 */        }
+/* 121.7 */        set(v) {
+/* 121.8 */            this.stateVarDecl_data_.set(v)
+/* 121.9 */        }
+/* 121.10 */    }
+/* 121.11 */    private var stateVarDecl_isType_: ObservedProperty < Bool >= ObservedProperty < Bool >("stateVarDecl_isType_", true)
+/* 121.12 */    private mut prop isType: Bool {
+/* 121.13 */        get() {
+/* 121.14 */            return this.stateVarDecl_isType_.get()
+/* 121.15 */        }
+/* 121.16 */        set(v) {
+/* 121.17 */            this.stateVarDecl_isType_.set(v)
+/* 121.18 */        }
+/* 121.19 */    }
+/* 121.20 */    public func build() {
+/* 121.21 */        this.observeComponentCreation({ elmtId, isInitialRender => Column { this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 121.22 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[0]), isType2: stateVarDecl_isType_))
+/* 121.23 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).padding(left: 40) })
+/* 121.24 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 121.25 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[1]), isType2: stateVarDecl_isType_))
+/* 121.26 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 121.27 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 121.28 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[2]), isType2: stateVarDecl_isType_))
+/* 121.29 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 121.30 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 121.31 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[3]), isType2: stateVarDecl_isType_))
+/* 121.32 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 121.33 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 121.34 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[4]), isType2: stateVarDecl_isType_))
+/* 121.35 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 121.36 */        this.observeComponentCreation({ elmtId, isInitialRender => GridRow(columns: 1) { this.observeComponentCreation({ elmtId, isInitialRender => GridCol { ViewStackProcessor.StartGetAccessRecordingFor(ViewStackProcessor.AllocateNewElmetIdForNextComponent())
+/* 121.37 */            CustomView.create(BubbleLine(this, data: ObservedProperty("", data[5]), isType2: stateVarDecl_isType_))
+/* 121.38 */        ViewStackProcessor.StopGetAccessRecording() } }) }.width(100.percent).height(60).margin(top: 10).padding(left: 40) })
+/* 121.39 */        this.observeComponentCreation({ elmtId, isInitialRender => Button("换一张").onClick { evt => let rowIndices = 0 ..= 5
+/* 121.40 */            
+/* 121.41 */            for(i in rowIndices) {
+/* 121.42 */                let colIndices = 0 ..= 5
+/* 121.43 */                for(j in colIndices) {
+/* 121.44 */                    this.data[i][j] =(true, 0)
+/* 121.45 */                }
+/* 121.46 */            }
+/* 121.47 */        } })
+/* 121.48 */        this.observeComponentCreation({ elmtId, isInitialRender => Button("更换类型").onClick { evt => let rowIndices = 0 ..= 5
+/* 121.49 */            
+/* 121.50 */            for(i in rowIndices) {
+/* 121.51 */                let colIndices = 0 ..= 5
+/* 121.52 */                for(j in colIndices) {
+/* 121.53 */                    this.data[i][j] =(true, 0)
+/* 121.54 */                }
+/* 121.55 */            }
+/* 121.56 */            
+/* 121.57 */            match(isType) {
+/* 121.58 */                case true => isType = false
+/* 121.59 */                case false => isType = true
+/* 121.60 */            } } }) }.margin(top: 10.percent).padding(top: 50).border(width: 1.vp).borderStyle(BorderStyle.Dashed) })
+/* 121.61 */            ()
+/* 121.62 */        }
+/* 121.63 */        public init(parent: Option < CustomView >, data!: Option < ObservedProperty < ObservedArray < ObservedMatrix >>>= None, isType!: Option < ObservedProperty < Bool >>= None, localStorage!: Option < LocalStorage >= None) {
+/* 121.64 */            super(parent, localStorage)
+/* 121.65 */            match(data) {
+/* 121.66 */                case Some(v) => this.stateVarDecl_data_ = ObservedProperty < ObservedArray < ObservedMatrix >>("stateVarDecl_data_", v.get())
+/* 121.67 */                case _ =>()
+/* 121.68 */            }
+/* 121.69 */            match(isType) {
+/* 121.70 */                case Some(v) => this.stateVarDecl_isType_ = ObservedProperty < Bool >("stateVarDecl_isType_", v.get())
+/* 121.71 */                case _ =>()
+/* 121.72 */            }
+/* 121.73 */            this.stateVarDecl_data_.subscribeEx(this)
+/* 121.74 */            this.stateVarDecl_isType_.subscribeEx(this)
+/* 121.75 */            SubscriberManager.getInstance().add(this)
+/* 121.76 */            registerSelf()
+/* 121.77 */            parent?.addChildById(id(), this)
+/* 121.78 */        }
+/* 121.79 */        public override func aboutToBeDeleted() {
+/* 121.80 */            this.stateVarDecl_data_.unsubscribeEx(this)
+/* 121.81 */            this.stateVarDecl_isType_.unsubscribeEx(this)
+/* 121.82 */            SubscriberManager.getInstance().delete(this)
+/* 121.83 */            this.aboutToBeDeletedInternal()
+/* 121.84 */        }
+/* 121.85 */        func updateWithValueParams(data!: Option < ObservedArray < ObservedMatrix >>= Option < ObservedArray < ObservedMatrix >>.None, isType!: Option < Bool >= Option < Bool >.None): Unit {
+/* 121.86 */            match(data) {
+/* 121.87 */                case Some(v) => this.data = v
+/* 121.88 */                case _ =>()
+/* 121.89 */            }
+/* 121.90 */            match(isType) {
+/* 121.91 */                case Some(v) => this.isType = v
+/* 121.92 */                case _ =>()
+/* 121.93 */            }
+/* 121.94 */        }
+/* 121.95 */        public func rerender() {
+/* 121.96 */            this.updateDirtyElements()
+/* 121.97 */        }
+/* 121.98 */        public func purgeVariableDependenciesOnElmtId(rmElmtId: Int64) {
+/* 121.99 */            this.stateVarDecl_data_.purgeDependencyOnElmtId(rmElmtId)
+/* 121.100 */            this.stateVarDecl_isType_.purgeDependencyOnElmtId(rmElmtId)
+/* 121.101 */        }
+/* 121.102 */        public func forceRerender(deep!: Bool = false) {
+/* 121.103 */            this.forceCompleteRerender(deep)
+/* 121.104 */        }
+/* 121.105 */    }
+/* 121.106 */    
+/* 121.107 */    public func appEntry_0(): Bool {
+/* 121.108 */        let view = EntryView(Option < CustomView >.None)
+/* 121.109 */        loadNativeView(view)
+/* 121.110 */    }
+/* 121.111 */    
+/* 121.112 */    let a_p_1 = CJEntry.getInstance().registerEntry("EntryView", appEntry_0)
+/* 121.113 */    
     /* ===== End of the Emit ===== */

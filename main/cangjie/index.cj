@@ -12,9 +12,11 @@ import ohos.image.InitializationOptions
 import ohos.image.PixelMapFormat
 import ohos.image.PixelMap
 import ohos.image.createPixelMap
-import ohos.image.Size as UniqueImageSize
+import ohos.image.Size as UniqueIm
 import ohos.prompt_action.*
 import std.collection.ArrayList
+import std.sync.*
+import std.time.*
 
 
 type ObservedMatrix = ObservedArray<(Bool,Int64)>
@@ -22,6 +24,10 @@ type ObservedMatrix = ObservedArray<(Bool,Int64)>
 class BubbleLine {
     @Prop var data: ObservedMatrix
     @Prop var isType2:Bool
+    @State var isShow:Bool=true
+    @State var wideSize:Length=40.vp
+    @State var heightSize:Length=40.vp
+
     func build() {
         Stack {
             Grid {
@@ -30,28 +36,75 @@ class BubbleLine {
                             if(data[i][0])
                             {
                                 if(isType2){
-                                    Image(@r(app.media.Before2)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
+                                    Image(@r(app.media.Before2)).width(this.wideSize).height(this.heightSize).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
-                                    data[i] = (!data[i][0],data[i][1])
+                                        if (this.isShow) {
+                                            animateTo(AnimateParam(
+                                                duration: 50,
+                                                curve: Curve.EaseOut,
+                                                iterations: 1,
+                                                playMode: PlayMode.Normal,
+                                                onFinish: {=> AppLog.info("play end")
+                                                                animateTo(AnimateParam(
+                                                                    duration: 100,
+                                                                    curve: Curve.EaseOut,
+                                                                    iterations: 1,
+                                                                    playMode: PlayMode.Normal,
+                                                                    onFinish: {=> AppLog.info("play end")
+                                                                            data[i] = (false,data[i][1])
+                                                                        }
+                                                                ), {=>
+                                                                    this.wideSize = 40.vp
+                                                                    this.heightSize = 40.vp
+                                                                    })
+                                                                }),
+                                                {=>
+                                                this.wideSize = 30.vp
+                                                this.heightSize = 30.vp
+                                                })
+                                        }
                                         })
                                 }else{
-                                    Image(@r(app.media.Before1)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
+                                    Image(@r(app.media.Before1)).width(this.wideSize).height(this.heightSize).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
-                                    data[i] = (!data[i][0],data[i][1])
+                                        if (this.isShow) {
+                                            animateTo(AnimateParam(
+                                                duration: 50,
+                                                curve: Curve.EaseOut,
+                                                iterations: 1,
+                                                playMode: PlayMode.Normal,
+                                                onFinish: {=> AppLog.info("play end")
+                                                                animateTo(AnimateParam(
+                                                                    duration: 100,
+                                                                    curve: Curve.EaseOut,
+                                                                    iterations: 1,
+                                                                    playMode: PlayMode.Normal,
+                                                                    onFinish: {=> AppLog.info("play end")
+                                                                            data[i] = (false,data[i][1])
+                                                                        }
+                                                                ), {=>
+                                                                    this.wideSize = 40.vp
+                                                                    this.heightSize = 40.vp
+                                                                    })
+                                                                }),
+                                                {=>
+                                                this.wideSize = 30.vp
+                                                this.heightSize = 30.vp
+                                                })
+                                        }
                                         })
                                 }
-
                             }
                             else{
                                 if(isType2){
                                     Image(@r(app.media.After2)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
-                                    data[i] = (!data[i][0],data[i][1])
+                                    data[i] = (false,data[i][1])
                                         })
                                 }else{
                                     Image(@r(app.media.After1)).width(40).height(40).border(width: 0.vp).borderStyle(BorderStyle.Dashed)
                             .onClick({evt =>
-                                    data[i] = (!data[i][0],data[i][1])
+                                    data[i] = (false,data[i][1])
                                         })
                                 }
                             }
@@ -70,7 +123,6 @@ class BubbleLine {
 class EntryView {
     @State var data: ObservedArray<ObservedMatrix> =
         ObservedArray(Array(6, { _ => ObservedArray(Array(6,item : (true,0))) }))
-//    @State var nowtype:Bubbletype=type2
     @State var isType:Bool=true
 
 
@@ -134,7 +186,6 @@ class EntryView {
                 }
             }
         }
-
             Button("更换类型")
             .onClick{
                 evt =>
@@ -160,3 +211,33 @@ class EntryView {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
